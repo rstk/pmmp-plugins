@@ -42,10 +42,10 @@ class StatsCommand extends Command implements PluginIdentifiableCommand {
 
         $sender->sendMessage(TextFormat::RED . "=====" . TextFormat::WHITE . " SERVER STATS " . TextFormat::RED . "=====");
         
-        $s = $playercount > 1 ? "s" : "";
+        $s = $playercount == 1 ? "s" : "";
         $sender->sendMessage(
             TextFormat::GREEN . TextFormat::BOLD . strval($playercount) .
-            TextFormat::RESET . TextFormat::GREEN . "player$s online"
+            TextFormat::RESET . TextFormat::GREEN . " player$s online"
         );
 
         if ($sender instanceof Player) {
@@ -66,7 +66,7 @@ class StatsCommand extends Command implements PluginIdentifiableCommand {
             TextFormat::RESET . $this->getTpsColor($tpsavrg) . strval($tpsavrg)
         );
 
-        $sender->sendMessage(TextFormat::RED . "======================");
+        $sender->sendMessage(TextFormat::RED . "========================");
     }
 
     private function getTpsColor(float $tps): string {
