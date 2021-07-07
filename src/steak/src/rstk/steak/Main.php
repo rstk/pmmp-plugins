@@ -14,6 +14,8 @@ use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 
 class Main extends PluginBase implements Listener {
+    private $defaultSteakAmount = NULL;
+
     public function onEnable() {
         // register onJoin/onCommand/etc events
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
@@ -21,6 +23,8 @@ class Main extends PluginBase implements Listener {
         // config
         $this->saveDefaultConfig();
         $this->reloadConfig();
+
+        $this->defaultSteakAmount = $this->getConfig()->get("default-steak-amount");
     
         // finished
         $this->getLogger()->info("Steak plugin started!");
@@ -32,6 +36,7 @@ class Main extends PluginBase implements Listener {
         $inventory = $player->getInventory();
 
         $this->getServer()->broadcastMessage("$name joined the server!");
+        $this->getServer()->broadcastMessage("Key: $this->defaultSteakAmount");
         $item = Item::get(345, 0, 1);
         $inventory->setItem(0, $item);
     }
@@ -60,7 +65,7 @@ class Main extends PluginBase implements Listener {
                     }
                 }
 
-                $nSteaks = $nSteaks == NULL ? intval($this->getConfig()->get("default-steak-amount")) : $nSteaks;
+                $nSteaks = $nSteaks == NULL ? intval($this->defaultSteakAmount) : $nSteaks;
 
                 $sender->getInventory()->addItem(Item::get(364, 0, $nSteaks));
                 $s = $nSteaks == 1 ? "" : "s";
