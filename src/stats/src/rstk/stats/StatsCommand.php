@@ -42,7 +42,7 @@ class StatsCommand extends Command implements PluginIdentifiableCommand {
 
         $sender->sendMessage(TextFormat::RED . "=====" . TextFormat::WHITE . " SERVER STATS " . TextFormat::RED . "=====");
         
-        $s = $playercount == 1 ? "s" : "";
+        $s = $playercount !== 1 ? "s" : "";
         $sender->sendMessage(
             TextFormat::GREEN . TextFormat::BOLD . strval($playercount) .
             TextFormat::RESET . TextFormat::GREEN . " player$s online"
