@@ -4,3 +4,14 @@ main: rstk\test\Main
 api: 3.21.1
 author: rstk
 description: test plugin
+
+
+commands:
+  test:
+    description: Get steaks
+    permission: perms.all
+
+permissions:
+  perms.all:
+    description: Permissions for all players
+    default: true
