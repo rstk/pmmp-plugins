@@ -7,7 +7,7 @@ description: test plugin
 
 
 commands:
-  test:
+  steak:
     description: Get steaks
     permission: perms.all
 

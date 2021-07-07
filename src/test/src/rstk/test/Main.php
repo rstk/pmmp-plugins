@@ -31,7 +31,7 @@ class Main extends PluginBase implements Listener {
 
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool {
         switch ($command->getName()) {
-            case "test":
+            case "steak":
 
                 if (!($sender instanceof Player)) {
                     $sender->sendMessage("This command only works for players!");
@@ -44,11 +44,13 @@ class Main extends PluginBase implements Listener {
 
                     if ($nSteaks <= 0) {
                         $sender->sendMessage("Please enter a valid integer!");
+                        return false;
                     }
                 }
 
                 $sender->getInventory()->addItem(Item::get(364, 0, $nSteaks));
-                $sender->sendMessage("Received $nSteaks steaks!");
+                $s = $nSteaks == 1 ? "" : "s";
+                $sender->sendMessage("Received $nSteaks steak$s!");
                 break;
         }
 
