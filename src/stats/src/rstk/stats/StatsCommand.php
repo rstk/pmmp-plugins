@@ -41,32 +41,25 @@ class StatsCommand extends Command implements PluginIdentifiableCommand {
         $playercount = count($server->getOnlinePlayers());
 
         $sender->sendMessage(TextFormat::RED . "=====" . TextFormat::WHITE . " SERVER STATS " . TextFormat::RED . "=====");
-        
+        $lastLine = "========================";
+
         $s = $playercount !== 1 ? "s" : "";
         $sender->sendMessage(
-            TextFormat::GREEN . TextFormat::BOLD . strval($playercount) .
+            TextFormat::GREEN . strval($playercount) .
             TextFormat::RESET . TextFormat::GREEN . " player$s online"
         );
 
         if ($sender instanceof Player) {
+            // on the minecraft client, one less equal sign looks better
+            $lastLine = substr($lastLine, 0, -1);
+
             $ping = $sender->getPing();
-            $sender->sendMessage(
-                TextFormat::BOLD . "Ping: " .
-                TextFormat::RESET . $this->getPingColor($ping) . strval($ping)
-            );
+            $sender->sendMessage("Ping: " . TextFormat::RESET . $this->getPingColor($ping) . strval($ping));
         }
 
-        $sender->sendMessage(
-            TextFormat::BOLD . "TPS: " .
-            TextFormat::RESET . $this->getTpsColor($tpsnow) . strval($tpsnow)
-        );
-
-        $sender->sendMessage(
-            TextFormat::BOLD . "Avrg TPS: " .
-            TextFormat::RESET . $this->getTpsColor($tpsavrg) . strval($tpsavrg)
-        );
-
-        $sender->sendMessage(TextFormat::RED . "========================");
+        $sender->sendMessage("TPS: " .TextFormat::RESET . $this->getTpsColor($tpsnow) . strval($tpsnow));
+        $sender->sendMessage("Avrg TPS: " . TextFormat::RESET . $this->getTpsColor($tpsavrg) . strval($tpsavrg));
+        $sender->sendMessage(TextFormat::RED . $lastLine);
     }
 
     private function getTpsColor(float $tps): string {
