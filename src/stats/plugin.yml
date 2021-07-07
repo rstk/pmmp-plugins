@@ -1,0 +1,17 @@
+name: stats
+version: 0.0.1
+main: rstk\stats\Main
+api: 3.21.1
+author: rstk
+description: Server stats
+
+commands:
+  stats:
+    description: See server stats
+    usage: "/stats"
+    permission: stats.perms.op
+
+permissions:
+  stats.perms.op:
+    description: Permissions for operators
+    default: op
