@@ -27,9 +27,15 @@ for directoryName in */ ; do
 	php -dphar.readonly=0 "../../devtools/src/DevTools/ConsoleScript.php" --make "$directoryName" --out "../../../${directoryName%?}.phar" &> /dev/null
 done
 
-# Cleanup
+# Self-update
 cd "../../.."
+rm -f build-plugins.sh
+mv tmp/plugins/build-plugins.sh .
+
+# Cleanup
 rm -rf tmp
 
 # Done
 echo Finished building plugins!
+
+# test
