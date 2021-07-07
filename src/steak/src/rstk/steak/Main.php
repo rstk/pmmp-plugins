@@ -15,8 +15,15 @@ use pocketmine\command\CommandSender;
 
 class Main extends PluginBase implements Listener {
     public function onEnable() {
+        // register onJoin/onCommand/etc events
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
-        $this->getLogger()->info("Test plugin started!");
+
+        // config
+        $this->saveDefaultConfig();
+        $this->reloadConfig();
+    
+        // finished
+        $this->getLogger()->info("Steak plugin started!");
     }
 
     public function onJoin(PlayerJoinEvent $event) {
@@ -43,7 +50,7 @@ class Main extends PluginBase implements Listener {
                     return false;
                 }
 
-                $nSteaks = 64;
+                $nSteaks = NULL;
                 if (isset($args[0])) {
                     $nSteaks = intval($args[0]);
 
@@ -52,6 +59,8 @@ class Main extends PluginBase implements Listener {
                         return false;
                     }
                 }
+
+                $nSteaks = $nSteaks == NULL ? intval($this->getConfig()->get("default-steak-amount")) : $nSteaks;
 
                 $sender->getInventory()->addItem(Item::get(364, 0, $nSteaks));
                 $s = $nSteaks == 1 ? "" : "s";
