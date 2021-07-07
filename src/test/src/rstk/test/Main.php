@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Rstk\TestPlugin;
+namespace rstk/test;
 
 use pocketmine\plugin\PluginBase;
 
-class Main extends PluginBase{
+class Main extends PluginBase {
 
 }
