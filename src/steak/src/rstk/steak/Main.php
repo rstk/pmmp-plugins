@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace rstk\test;
+namespace rstk\steak;
 
 use pocketmine\plugin\PluginBase;
 use pocketmine\Player;
