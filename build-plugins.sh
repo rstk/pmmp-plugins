@@ -28,12 +28,12 @@ for directoryName in */ ; do
 done
 
 # Self-update
-cd "../../.."
+cd "../../../.."
 rm -f build-plugins.sh
-mv tmp/plugins/build-plugins.sh .
+mv plugins/tmp/plugins/build-plugins.sh .
 
 # Cleanup
-rm -rf tmp
+rm -rf plugins/tmp
 
 # Done
 echo Finished building plugins!
