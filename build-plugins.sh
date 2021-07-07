@@ -37,5 +37,3 @@ rm -rf plugins/tmp
 
 # Done
 echo Finished building plugins!
-
-# test
