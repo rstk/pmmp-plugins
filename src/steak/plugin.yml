@@ -1,10 +1,9 @@
-name: test
+name: steak
 version: 0.0.1
-main: rstk\test\Main
+main: rstk\steak\Main
 api: 3.21.1
 author: rstk
-description: test plugin
-
+description: the /steak command
 
 commands:
   steak:
@@ -12,6 +11,10 @@ commands:
     permission: perms.all
 
 permissions:
-  perms.all:
+  steak.perms.all:
     description: Permissions for all players
     default: true
+  
+  steak.perms.op:
+    description: Permissions for operators
+    default: op

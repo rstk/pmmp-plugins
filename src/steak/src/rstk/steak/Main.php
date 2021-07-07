@@ -33,12 +33,17 @@ class Main extends PluginBase implements Listener {
         switch ($command->getName()) {
             case "steak":
 
-                if (!($sender instanceof Player)) {
+                if (!$sender instanceof Player) {
                     $sender->sendMessage("This command only works for players!");
                     return false;
                 }
 
-                $nSteaks = 10;
+                if (!$sender->hasPermission("perms.op")) {
+                    $sender->sendMessage("You must be an operator to use this command!");
+                    return false;
+                }
+
+                $nSteaks = 64;
                 if (isset($args[0])) {
                     $nSteaks = intval($args[0]);
 
@@ -53,7 +58,7 @@ class Main extends PluginBase implements Listener {
                 $sender->sendMessage("Received $nSteaks steak$s!");
                 break;
         }
-
+ 
         return true;
     }
 }
