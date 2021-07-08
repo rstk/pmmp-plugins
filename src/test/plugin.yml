@@ -1,0 +1,11 @@
+name: test
+version: 0.0.1
+main: rstk\test\Main
+api: 3.21.1
+author: rstk
+description: Server stats
+
+permissions:
+  stats.perms.op:
+    description: Permissions for operators
+    default: op
