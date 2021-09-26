@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/env bash
 
 echo Starting to build plugins...
 
